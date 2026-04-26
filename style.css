@@ -1,0 +1,126 @@
+
+:root {
+    --espacio-bg: #03002e; 
+    --planeta-color: #FFFFFF;
+    --nave-color: #ffffff;
+    --luz-color: #ffeb3b;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--espacio-bg);
+    overflow: hidden; 
+    color: white;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.escena-espacial {
+    position: relative;
+    width: 80vw;
+    height: 80vh;
+    background: radial-gradient(circle, #0e1250 0%, #03002e 100%);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    cursor: pointer; 
+}
+
+.titulo {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2rem;
+    position: relative;
+    z-index: 10; 
+}
+
+.instruccion {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    opacity: 0.7;
+}
+
+
+.hijo-planeta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    background-color: var(--planeta-color);
+    border-radius: 50%;
+    box-shadow: inset 20px 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px var(--planeta-color);
+    animation: respirar 5s ease-in-out infinite;
+}
+
+
+.hijo-nave {
+    position: absolute;
+    bottom: -100px; 
+    left: 20%;
+    font-size: 80px;
+    z-index: 5;
+    transition: all 0.5s ease-out; 
+}
+
+
+.nieto-luz {
+    position: absolute;
+    bottom: 10px;
+    left: 45%;
+    width: 10px;
+    height: 10px;
+    background-color: var(--luz-color);
+    border-radius: 50%;
+    animation: parpadear 0.5s ease-in-out infinite;
+    animation-delay: 1s; 
+}
+
+
+.escena-espacial:hover .hijo-nave {
+  
+    animation: despegar 5s forwards;
+}
+
+
+@keyframes respirar {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.05); } 
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+
+@keyframes parpadear {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+
+@keyframes despegar {
+    0% {
+        bottom: -100px;
+        transform: rotate(0deg);
+    }
+    30% {
+        bottom: 50%;
+        transform: rotate(-10deg);
+    }
+    50% {
+        bottom: 50%;
+        transform: rotate(10deg); 
+    }
+    100% {
+        bottom: 120%; 
+        transform: rotate(0deg) scale(0.5); 
+    }
+}
